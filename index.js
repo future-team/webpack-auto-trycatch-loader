@@ -1,23 +1,26 @@
 'use strict';
-const loaderUtils	= require("loader-utils");
+const loaderUtils = require("loader-utils");
 const fs = require("fs");
 const path = require("path");
 const gfsAutoTrycatch = require('/usr/local/lib/node_modules/gfs-auto-trycatch');
 
-module.exports = function(source) {
+module.exports = function(source, inputMap) {
     // ?
     this.cacheable();
     const currentRequest = loaderUtils.getCurrentRequest(this);
-    let content = '';
+    const webpackRemainingChain = loaderUtils.getRemainingRequest(this).split("!");
+    const filename = webpackRemainingChain[webpackRemainingChain.length - 1];
+    const dir = path.dirname(currentRequest.split('!')[1]);
     try {
-      const dir = path.dirname(currentRequest.split('!')[1]);
       // If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
-      const content = fs.readFileSync( currentRequest, 'utf-8');
-      console.log('file path is :', currentRequest, ' file directory is: ', dir);
     }catch(e) {
         // not exit
-        console.error('patch-web.js is not exit!')
+        console.error('something warn!')
     }
-    const newFile = gfsAutoTrycatch(content, source, config);
+    const newFile = gfsAutoTrycatch(source, {
+        cwd: process.cwd(),
+        path: dir,
+        filename: filename
+    });
     return newFile;
 };

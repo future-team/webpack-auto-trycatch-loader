@@ -1,5 +1,5 @@
 {
-  "name": "webpack-auto-trycatch-loader",
+  "name": "auto-trycatch-loader",
   "version": "1.0.0",
   "description": "gfs-auto-trycatch for webpack",
   "main": "index.js",
