@@ -1,26 +1,35 @@
 'use strict';
-const loaderUtils = require("loader-utils");
-const fs = require("fs");
-const path = require("path");
-const gfsAutoTrycatch = require('/usr/local/lib/node_modules/gfs-auto-trycatch');
+var loaderUtils = require("loader-utils");
+var fs = require("fs");
+var path = require("path");
+var assign = require('object-assign');
+var pkg = require("./package.json");
+var gfsAutoTrycatch = require('/usr/local/lib/node_modules/gfs-auto-trycatch');
 
-module.exports = function(source, inputMap) {
-    // ?
+module.exports = function(source, inputSourceMap) {
     this.cacheable();
-    const currentRequest = loaderUtils.getCurrentRequest(this);
-    const webpackRemainingChain = loaderUtils.getRemainingRequest(this).split("!");
-    const filename = webpackRemainingChain[webpackRemainingChain.length - 1];
-    const dir = path.dirname(currentRequest.split('!')[1]);
+    // Handle options
+    var webpackRemainingChain = loaderUtils.getRemainingRequest(this).split('!');
+    var filename = webpackRemainingChain[webpackRemainingChain.length - 1];
+    // var relativeDir = loaderUtils.urlToRequest(url, root)
+    var globalOptions = this.options.babel || {};
+    // var loaderOptions = loaderUtils.parseQuery(this.resourceQuery);
+    var userOptions = assign({}, globalOptions);
+    var defaultOptions = {
+        sourceRoot: process.cwd(),
+        filename: filename,
+        filenameRelative: path.relative(process.cwd(), filename),
+        sourceMap: inputSourceMap,
+    };
+    var options = assign({}, defaultOptions, userOptions);
+    if (options.sourceMap === undefined) {
+        options.sourceMap = this.sourceMap;
+    }
+    var newFile = source;
     try {
-      // If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
+        newFile = gfsAutoTrycatch(source, options);
     }catch(e) {
-        // not exit
         console.error('something warn!')
     }
-    const newFile = gfsAutoTrycatch(source, {
-        cwd: process.cwd(),
-        path: dir,
-        filename: filename
-    });
     return newFile;
 };

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/future-team/webpack-auto-trycatch-loader#readme",
   "dependencies": {
     "loader-utils": "^1.0.3",
+    "object-assign": "^4.0.1",
     "gfs-auto-trycatch": "file:/usr/local/lib/node_modules/gfs-auto-trycatch"
   }
 }
