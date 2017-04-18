@@ -4,7 +4,7 @@ var fs = require("fs");
 var path = require("path");
 var assign = require('object-assign');
 var pkg = require("./package.json");
-var gfsAutoTrycatch = require('/usr/local/lib/node_modules/gfs-auto-trycatch');
+var gfsAutoTrycatch = require('gfs-auto-trycatch');
 
 module.exports = function(source, inputSourceMap) {
     this.cacheable();
@@ -29,7 +29,7 @@ module.exports = function(source, inputSourceMap) {
     try {
         newFile = gfsAutoTrycatch(source, options);
     }catch(e) {
-        console.error('something warn!')
+        console.error('something warn!', e)
     }
     return newFile;
 };

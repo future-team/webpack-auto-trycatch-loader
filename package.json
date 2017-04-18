@@ -10,15 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/future-team/webpack-auto-trycatch-loader.git"
   },
-  "author": "lee.genffy@gmail.com",
-  "license": "ISC",
+  "author": {
+    "name": "Genffy Lee",
+    "email": "lee.genffy@gmail.com"
+  },
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/future-team/webpack-auto-trycatch-loader/issues"
   },
   "homepage": "https://github.com/future-team/webpack-auto-trycatch-loader#readme",
   "dependencies": {
+    "gfs-auto-trycatch": "^1.0.0",
     "loader-utils": "^1.0.3",
-    "object-assign": "^4.0.1",
-    "gfs-auto-trycatch": "file:/usr/local/lib/node_modules/gfs-auto-trycatch"
+    "object-assign": "^4.0.1"
   }
 }
