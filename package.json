@@ -1,6 +1,6 @@
 {
   "name": "auto-trycatch-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gfs-auto-trycatch for webpack",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/future-team/webpack-auto-trycatch-loader#readme",
   "dependencies": {
-    "gfs-auto-trycatch": "^1.0.0",
+    "gfs-auto-trycatch": "latest",
     "loader-utils": "^1.0.3",
     "object-assign": "^4.0.1"
   }
