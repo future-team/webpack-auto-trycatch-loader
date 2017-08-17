@@ -13,6 +13,7 @@ module.exports = function(source, inputSourceMap) {
     var filename = webpackRemainingChain[webpackRemainingChain.length - 1];
     // var relativeDir = loaderUtils.urlToRequest(url, root)
     var globalOptions = this.options.babel || {};
+    var loaderOptions = loaderUtils.getOptions(this)
     // var loaderOptions = loaderUtils.parseQuery(this.resourceQuery);
     var userOptions = assign({}, globalOptions);
     var defaultOptions = {
@@ -21,7 +22,7 @@ module.exports = function(source, inputSourceMap) {
         filenameRelative: path.relative(process.cwd(), filename),
         sourceMap: inputSourceMap,
     };
-    var options = assign({}, defaultOptions, userOptions);
+    var options = assign({}, defaultOptions, userOptions, loaderOptions);
     if (options.sourceMap === undefined) {
         options.sourceMap = this.sourceMap;
     }
