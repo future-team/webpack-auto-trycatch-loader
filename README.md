@@ -11,7 +11,7 @@ window.GFS_TRY_CATCH_ERROR_HANDLE = function(ERROR_VARIABLE_NAME, FILENAME, FUNC
 }
 ```
 if you want to use defined it, you need to config in webpack loaders:
-```JSON
+```javascript
 {
     test: /\.(jsx|es6)$/,
     loaders: ['auto-trycatch-loader?errorHandleFuncName=defined_error_handle_name', 'babel'],
