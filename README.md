@@ -1,5 +1,9 @@
 # webpack-auto-trycatch-loader
-gfs-auto-trycatch for webpack
+A tool design for auto add `try catch` handler for javascript code when build project.  
+
+Developer can hack global error handler to deal errors, such as send it to monitor system.
+
+This repo is `webpack` loader for `gfs-auto-trycatch`
 
 ## Options
 `errorHandleFuncName`: how to deal error, the default value is `GFS_TRY_CATCH_ERROR_HANDLE`,
