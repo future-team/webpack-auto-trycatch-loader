@@ -37,3 +37,6 @@ $ npm install auto-trycatch-loader --save-dev
 }
 ```
 `NOTE`: auto-trycatch-loader must before babel loader
+
+## Note
+Currently only test in  `jsx` and `es6` syntax.
